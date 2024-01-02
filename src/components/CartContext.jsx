@@ -5,6 +5,7 @@ export const Context = createContext(null);
 
 const CartContext = (props) => {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -19,10 +20,21 @@ const CartContext = (props) => {
     };
 
     fetchAPI();
-  }, []); // Empty dependency array to fetch data only once when the component mounts
+  }, []);
+
+  const addToCart = (productId, productTitle, productPrice, ProductImg) => {
+    // Add the selected product to the cart
+    const newCartItem = {
+      id: productId,
+      title: productTitle,
+      price: productPrice,
+      images: ProductImg,
+    };
+    setCart((prevCart) => [...prevCart, newCartItem]);
+  };
 
   return (
-    <Context.Provider value={{ products, setProducts }}>
+    <Context.Provider value={{ products, setProducts, cart, addToCart }}>
       {props.children}
     </Context.Provider>
   );
