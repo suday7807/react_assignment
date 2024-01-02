@@ -6,6 +6,7 @@ const ProtectedRoute = ({ Home }) => {
   useEffect(() => {
     const login = localStorage.getItem("token");
     if (!login) {
+      console.log(login, "Please");
       navigate("/");
     }
   });

@@ -13,7 +13,6 @@ const CartContext = (props) => {
         const response = await axios.get("https://dummyjson.com/products");
         const data = response.data.products;
         setProducts(data);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

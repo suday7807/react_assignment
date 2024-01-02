@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 
 const Cart = () => {
   const { cart } = useContext(Context);
-  console.log(cart);
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
@@ -21,7 +20,7 @@ const Cart = () => {
           <div className="">
             <ul>
               {cart.map((item) => (
-                <li
+                <div
                   key={item.id}
                   className=" flex justify-around items-center h-20 "
                 >
@@ -32,7 +31,7 @@ const Cart = () => {
                   />
                   <li> {item.title} </li>
                   <li> ${item.price}</li>
-                </li>
+                </div>
               ))}
             </ul>
             <div className="flex justify-around h-20 items-center">

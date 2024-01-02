@@ -8,11 +8,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (token) {
-      navigate("/home");
-    }
-  }, [token, navigate]);
+  // useEffect(() => {
+  //   if (token) {
+  //
+  //   }
+  // }, [token, navigate]);
 
   const handleSubmit = async (e) => {
     try {
@@ -21,12 +21,13 @@ const Login = () => {
         username, //kminchelle
         password, //0lelplR
       });
-      console.log(response);
+
       const { token } = response.data;
 
       if (token) {
         setToken(token);
         localStorage.setItem("token", token);
+        navigate("/home");
       }
     } catch (error) {
       console.log(error);
