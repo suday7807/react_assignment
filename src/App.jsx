@@ -10,8 +10,8 @@ function App() {
   return (
     <CartContext>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<ProtectedRoute Home={Home} />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<ProtectedRoute Home={Home} />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </CartContext>

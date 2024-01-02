@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [token, setToken] = useState("");
@@ -10,7 +10,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate("/");
+      navigate("/home");
     }
   }, [token, navigate]);
 
@@ -21,15 +21,16 @@ const Login = () => {
         username, //kminchelle
         password, //0lelplR
       });
-
+      console.log(response);
       const { token } = response.data;
 
-      if (token && typeof token === "string") {
+      if (token) {
         setToken(token);
         localStorage.setItem("token", token);
       }
     } catch (error) {
       console.log(error);
+      alert("invalid Credentials");
     }
   };
 

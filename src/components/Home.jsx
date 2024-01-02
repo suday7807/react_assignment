@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 
 const Home = () => {
   const [search, setSearch] = useState("");
-  const { products, cart, addToCart } = useContext(Context);
+  const { products } = useContext(Context);
 
   return (
     <>
