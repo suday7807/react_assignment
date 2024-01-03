@@ -1,9 +1,16 @@
 import React, { useContext } from "react";
 import { Context } from "./CartContext";
 import Navbar from "./Navbar";
+import { toast } from "react-toastify";
 
 const Cart = () => {
-  const { cart } = useContext(Context);
+  const { cart, setCart } = useContext(Context);
+
+  const handleRemove = (id) => {
+    const arr = cart.filter((item) => item.id != id);
+    setCart(arr);
+    toast.success("Item remove from cart");
+  };
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
@@ -29,8 +36,14 @@ const Cart = () => {
                     alt={item.title}
                     className=" w-[100px] h-10"
                   />
-                  <li> {item.title} </li>
+                  <li className=" w-[200px] truncate "> {item.title} </li>
                   <li> ${item.price}</li>
+                  <button
+                    className=" bg-purple-600 border-2 rounded-lg py-1 font-semibold px-4"
+                    onClick={() => handleRemove(item.id)}
+                  >
+                    Remove
+                  </button>
                 </div>
               ))}
             </ul>
@@ -38,7 +51,10 @@ const Cart = () => {
               <p className=" text-center font-bold">
                 Total: ${calculateTotal()}
               </p>
-              <button className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center">
+              <button
+                onClick={() => toast("Your order is placed")}
+                className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center"
+              >
                 Check Out
               </button>
             </div>

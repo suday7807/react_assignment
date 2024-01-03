@@ -22,7 +22,6 @@ const CartContext = (props) => {
   }, []);
 
   const addToCart = (productId, productTitle, productPrice, ProductImg) => {
-    // Add the selected product to the cart
     const newCartItem = {
       id: productId,
       title: productTitle,
@@ -33,7 +32,9 @@ const CartContext = (props) => {
   };
 
   return (
-    <Context.Provider value={{ products, setProducts, cart, addToCart }}>
+    <Context.Provider
+      value={{ products, setProducts, setCart, cart, addToCart }}
+    >
       {props.children}
     </Context.Provider>
   );
