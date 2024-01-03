@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [token, setToken] = useState("");
+ // const [token, setToken] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Login = () => {
       const { token } = response.data;
 
       if (token) {
-        setToken(token);
+       // setToken(token);
         localStorage.setItem("token", token);
         navigate("/home");
       }
